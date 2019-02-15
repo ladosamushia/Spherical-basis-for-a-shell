@@ -115,26 +115,25 @@ orthogonal basis vectors is made of exponentials
 
 \begin{equation}
 \label{eq:Fcube}
-\mathbf{e}_\mathbf{k} \propto e^{i\left(k_xx + k_yy + k_zz\right)},
+f_{l,m,n}(x,y,z)\propto e^{i\frac{2\pi}{L}\left(lx + my + mz\right)},
 \end{equation}
 
-where $k_x$, $k_y$, $k_z$ are integer multiples of $2\pi/L$, and $x$, $y$, $z$
-are Cartesian coordinates.
+where $l$, $m$, $n$ are integers and $x$, $y$, $z$ are Cartesian coordinates.
 
-Inside of a sphere, with zero boundary conditions on the outer boundary and a
-restriction that the functions are finite everywhere inside, the complete
-orthogonal basis is
+Inside of a sphere of size $R$, with zero boundary conditions on the outer
+boundary and a restriction that the functions are finite everywhere inside, the
+complete orthogonal basis is
 
 \begin{equation}
 \label{eq:Fsphere}
-\mathbf{e}_{\ell,m,n} \propto j_\ell\left(\frac{k_{\ell,n}}{R}r\right)Y^\ell_m 
+f_{\ell,m,n}(r,\theta,\phi) \propto j_\ell\left(\frac{k_{\ell,n}} {R}r\right)Y^\ell_m
 (\theta,\phi).
 \end{equation}
 
 Here $j_\ell$ are spherical Bessel functions of the first kind, $Y^\ell_m$ are the
-spherical harmonics, $k_{\ell,n}$ is the n-th zero of the $\ell$-th order
-spherical Bessel function, $\ell$ and $m$ are integers satisfying $\ell \leq
-m \leq \ell$, and $r$, $\theta$, $\phi$ are spherical coordinates.
+spherical harmonics, and $k_{\ell,n}$ is the n-th zero of the $\ell$-th order
+spherical Bessel function. $r$, $\theta$, $\phi$ are spherical coordinates,
+while $n$, $\ell$ and $m$ are integers satisfying $\ell \leq m \leq \ell$.
 
 Real survey volumes are neither cubes nor spheres, but rather have a complicated
 geometry. A standard practice is to embedd these volumes into a larger cube,
