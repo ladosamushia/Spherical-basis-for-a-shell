@@ -88,7 +88,6 @@ $^{3}$ Third institute
 
 % Abstract of the paper
 \begin{abstract}
-
 \end{abstract}
 
 % Select between one and six entries from the list of approved keywords.
@@ -103,9 +102,101 @@ methods: analytical -- methods: data analysis -- methods: numerical -- methods: 
 
 \section{Introduction}
 
+Cosmological fields are often analyzed in Fourier basis. This is convenient
+because the distribution of matter in the Universe is initially very close to
+Gaussian with different Fourier modes statistically independent form each other.
+Although, gravitational instability couples initially independent Fourier modes
+on smaller scales, on large scales, where the gravitational evolution is close
+to linear, the Fourier modes remain uncorrelated.
+
+Fourier bases depends on the geometry of the analyzed volume. For a cube with a
+side length $L$ and  periodic boundary conditions the proper set of complete
+orthogonal basis vectors is made of exponentials 
+
+\begin{equation}
+\label{eq:Fcube}
+\mathbf{e}_\mathbf{k} \propto e^{i\left(k_xx + k_yy + k_zz\right)},
+\end{equation}
+
+where $k_x$, $k_y$, $k_z$ are integer multiples of $2\pi/L$, and $x$, $y$, $z$
+are Cartesian coordinates.
+
+Inside of a sphere, with zero boundary conditions on the outer boundary and a
+restriction that the functions are finite everywhere inside, the complete
+orthogonal basis is
+
+\begin{equation}
+\label{eq:Fsphere}
+\mathbf{e}_{\ell,m,n} \propto j_\ell\left(\frac{k_{\ell,n}}{R}r\right)Y^\ell_m 
+(\theta,\phi).
+\end{equation}
+
+Here $j_\ell$ are spherical Bessel functions of the first kind, $Y^\ell_m$ are the
+spherical harmonics, $k_{\ell,n}$ is the n-th zero of the $\ell$-th order
+spherical Bessel function, $\ell$ and $m$ are integers satisfying $\ell \leq
+m \leq \ell$, and $r$, $\theta$, $\phi$ are spherical coordinates.
+
+Real survey volumes are neither cubes nor spheres, but rather have a complicated
+geometry. A standard practice is to embedd these volumes into a larger cube,
+zero-pad the areas outside the actual observable volume, and Fourier decompose the
+field in the basis of Eq.~(\ref{eq:Fcube}). Alternatively, one can use an
+enclosing sphere and the basis of Eq.~(\ref{eq:Fsphere}).
+
+The Cartesian basis is more convenient to compute and interpret and
+is more frequently used in the analysis of galaxy clustering data. The spherical
+basis of has the advantage that some of the relevant physics (e.g. redshift-space
+distortions, redshift evolution) is better aligned with the coordinates.
+
+In both cases we are using a larger than observed volume for Fourier
+decomposition which gives rise to so called ``Window effects''. The basis vectors
+are not orthogonal anymore. Since the decomposition volume is larger than the
+observed volume there are too many basis vectors and not all of them are
+independent. This affects large scales (comparable to the size of the survey) more
+and correlates those modes even when they are Gaussian. If we decomposed the
+distribution in true eigenvectors of the observed volume large scale linear modes
+would be uncorrelated. Unfortunately, this is not possible due to a complicated
+nature of visibility masks.
+
+In this paper we propose a mehtod that comes very close to this goal. The method
+relies on the fact that surveys are usually analised in redshift slices with a
+sharp boundary at $r_\mathrm{min}$ and $r_\mathrm{max}$ away from the observer,
+forming a spherical shell. The \mathbf{exact} eigenvectors of a spherical shell
+can be easily computed and expressed in terms of first and second kind spherical
+Bessel functions. We can go one step further and enclose the observed angular mask
+into a bounding spherical cap. We will show below that even the \mathbf{exact}
+eigenvectors for a spherical cap can also be easily computed and expressed in
+terms of Legendre functions of the first and second kind. This results in a new
+basis for Fourier decomposition that is similar to the spherical basis but has
+fewer (less correlated) modes. The basis can be described by $k_n$ - a wavenumber
+of a radial mode, and two orbital numbers $\tilde{\ell}$ and $\tilde{m}$ that
+describe angular patterns. Unlike spherical Fourier decomposition $\tilde{\ell}$
+does not have to be an integer.
+
+The basis we propose has a number of advantages, especially when describing
+clustering on large scales. The radial modes are in fact exact and fully
+uncorrelated. Since survey masks do not form a perfect spherical cap, the angular
+modes are not exact but are closer to the ``true'' basis than the conventional
+spherical harmonics decomposition. As a result the new basis has fewer
+eigenvectors for the same range of scales that are much less correlated becaues of
+the reduced redundancy.
+
+The new basis is not computationally more expensive than the standard
+decompositions and may be advantagous when analysing large-scale structure on
+large (compared to the size of the sample) scales such as the analysis of
+non-Gaussianity in galaxy and weak lensing surveys, $\ldots$.
+
+We will derive the basis in section~\ref{sec:basis} and will apply it to the
+large-scale clustering of BOSS DR12 galaxies in section~\ref{sec:data} to
+demonstrate that it indeed reduces the correlation of large-scale modes.
+
 \section{Complete Basis for a spherical shell}
+\label{sec:basis}
+
+\section{Testing new basis on BOSS DR12 data}
+\label{sec:data}
 
 \section{Conclusions}
+\label{sec:conclusions}
 
 \section*{Acknowledgements}
 
