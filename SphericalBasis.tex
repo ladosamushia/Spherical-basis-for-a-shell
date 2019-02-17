@@ -115,7 +115,7 @@ orthogonal basis vectors is made of exponentials
 
 \begin{equation}
 \label{eq:Fcube}
-f_{l,m,n}(x,y,z)\propto e^{i\frac{2\pi}{L}\left(lx + my + mz\right)},
+f_{l,m,n}(x,y,z)\propto e^{i\frac{2\pi}{L}\left(lx + my + nz\right)},
 \end{equation}
 
 where $l$, $m$, $n$ are integers and $x$, $y$, $z$ are Cartesian coordinates.
@@ -133,10 +133,10 @@ f_{\ell,m,n}(r,\theta,\phi) \propto j_\ell\left(\frac{k_{\ell,n}} {R}r\right)Y^\
 Here $j_\ell$ are spherical Bessel functions of the first kind, $Y^\ell_m$ are the
 spherical harmonics, and $k_{\ell,n}$ is the n-th zero of the $\ell$-th order
 spherical Bessel function. $r$, $\theta$, $\phi$ are spherical coordinates,
-while $n$, $\ell$ and $m$ are integers satisfying $\ell \leq m \leq \ell$.
+while $n$, $\ell$ and $m$ are integers satisfying $-\ell \leq m \leq \ell$.
 
 Real survey volumes are neither cubes nor spheres, but rather have a complicated
-geometry. A standard practice is to embedd these volumes into a larger cube,
+geometry. A standard practice is to embeds these volumes into a larger cube,
 zero-pad the areas outside the actual observable volume, and Fourier decompose the
 field in the basis of Eq.~(\ref{eq:Fcube}). Alternatively, one can use an
 enclosing sphere and the basis of Eq.~(\ref{eq:Fsphere}).
@@ -156,31 +156,31 @@ distribution in true eigenvectors of the observed volume large scale linear mode
 would be uncorrelated. Unfortunately, this is not possible due to a complicated
 nature of visibility masks.
 
-In this paper we propose a mehtod that comes very close to this goal. The method
-relies on the fact that surveys are usually analised in redshift slices with a
+In this paper we propose a method that comes very close to this goal. The method
+relies on the fact that surveys are usually analyzed in redshift slices with a
 sharp boundary at $r_\mathrm{min}$ and $r_\mathrm{max}$ away from the observer,
-forming a spherical shell. The \mathbf{exact} eigenvectors of a spherical shell
+forming a spherical shell. The \textbf{exact} eigenvectors of a spherical shell
 can be easily computed and expressed in terms of first and second kind spherical
 Bessel functions. We can go one step further and enclose the observed angular mask
-into a bounding spherical cap. We will show below that even the \mathbf{exact}
-eigenvectors for a spherical cap can also be easily computed and expressed in
-terms of Legendre functions of the first and second kind. This results in a new
-basis for Fourier decomposition that is similar to the spherical basis but has
-fewer (less correlated) modes. The basis can be described by $k_n$ - a wavenumber
-of a radial mode, and two orbital numbers $\tilde{\ell}$ and $\tilde{m}$ that
-describe angular patterns. Unlike spherical Fourier decomposition $\tilde{\ell}$
-does not have to be an integer.
+into a bounding spherical cap. We will show below that even the exact eigenvectors
+for a spherical cap can also be easily computed and expressed in terms of Legendre
+functions of the first and second kind. This results in a new basis for Fourier
+decomposition that is similar to the spherical basis but has fewer (less
+correlated) modes. The basis can be described by $k_n$ - a wavenumber of a radial
+mode, and two orbital numbers $\widetilde{\ell}$ and $\widetilde{m}$ that describe
+angular patterns. Unlike spherical Fourier decomposition $ \widetilde{\ell}$ does
+not have to be an integer.
 
 The basis we propose has a number of advantages, especially when describing
 clustering on large scales. The radial modes are in fact exact and fully
 uncorrelated. Since survey masks do not form a perfect spherical cap, the angular
 modes are not exact but are closer to the ``true'' basis than the conventional
 spherical harmonics decomposition. As a result the new basis has fewer
-eigenvectors for the same range of scales that are much less correlated becaues of
+eigenvectors for the same range of scales that are much less correlated because of
 the reduced redundancy.
 
 The new basis is not computationally more expensive than the standard
-decompositions and may be advantagous when analysing large-scale structure on
+decompositions and may be advantageous when analyzing large-scale structure on
 large (compared to the size of the sample) scales such as the analysis of
 non-Gaussianity in galaxy and weak lensing surveys, $\ldots$.
 
