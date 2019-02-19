@@ -51,7 +51,8 @@
 % Please keep new commands to a minimum, and use \newcommand not \def to avoid
 % overwriting existing commands. Example:
 %\newcommand{\pcm}{\,cm$^{-2}$}	% per cm-squared
-
+\newcommand{\rmin}{\rmin}
+\newcommand{\rmax}{\rmax}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%% TITLE PAGE %%%%%%%%%%%%%%%%%%%
@@ -130,59 +131,60 @@ f_{\ell,m,n}(r,\theta,\phi) \propto j_\ell\left(\frac{k_{\ell,n}} {R}r\right)Y^\
 (\theta,\phi).
 \end{equation}
 
-Here $j_\ell$ are spherical Bessel functions of the first kind, $Y^\ell_m$ are the
-spherical harmonics, and $k_{\ell,n}$ is the n-th zero of the $\ell$-th order
-spherical Bessel function. $r$, $\theta$, $\phi$ are spherical coordinates,
-while $n$, $\ell$ and $m$ are integers satisfying $-\ell \leq m \leq \ell$.
+Here $j_\ell$ are spherical Bessel functions of the first kind, $Y^\ell_m$ are
+the spherical harmonics, and $k_{\ell,n}$ is the n-th zero of the $\ell$-th
+order spherical Bessel function. $r$, $\theta$, $\phi$ are spherical
+coordinates, while $n$, $\ell$ and $m$ are integers satisfying $-\ell \leq m
+\leq \ell$.
 
 Real survey volumes are neither cubes nor spheres, but rather have a complicated
 geometry. A standard practice is to embeds these volumes into a larger cube,
-zero-pad the areas outside the actual observable volume, and Fourier decompose the
-field in the basis of Eq.~(\ref{eq:Fcube}). Alternatively, one can use an
+zero-pad the areas outside the actual observable volume, and Fourier decompose
+the field in the basis of Eq.~(\ref{eq:Fcube}). Alternatively, one can use an
 enclosing sphere and the basis of Eq.~(\ref{eq:Fsphere}).
 
-The Cartesian basis is more convenient to compute and interpret and
-is more frequently used in the analysis of galaxy clustering data. The spherical
-basis of has the advantage that some of the relevant physics (e.g. redshift-space
+The Cartesian basis is more convenient to compute and interpret and is more
+frequently used in the analysis of galaxy clustering data. The spherical basis
+of has the advantage that some of the relevant physics (e.g. redshift-space
 distortions, redshift evolution) is better aligned with the coordinates.
 
 In both cases we are using a larger than observed volume for Fourier
-decomposition which gives rise to so called ``Window effects''. The basis vectors
-are not orthogonal anymore. Since the decomposition volume is larger than the
-observed volume there are too many basis vectors and not all of them are
-independent. This affects large scales (comparable to the size of the survey) more
-and correlates those modes even when they are Gaussian. If we decomposed the
-distribution in true eigenvectors of the observed volume large scale linear modes
-would be uncorrelated. Unfortunately, this is not possible due to a complicated
-nature of visibility masks.
+decomposition which gives rise to so called ``Window effects''. The basis
+vectors are not orthogonal anymore. Since the decomposition volume is larger
+than the observed volume there are too many basis vectors and not all of them
+are independent. This affects large scales (comparable to the size of the
+survey) more and correlates those modes even when they are Gaussian. If we
+decomposed the distribution in true eigenvectors of the observed volume large
+scale linear modes would be uncorrelated. Unfortunately, this is not possible
+due to a complicated nature of visibility masks.
 
 In this paper we propose a method that comes very close to this goal. The method
 relies on the fact that surveys are usually analyzed in redshift slices with a
-sharp boundary at $r_\mathrm{min}$ and $r_\mathrm{max}$ away from the observer,
+sharp boundary at $\rmin$ and $\rmax$ away from the observer,
 forming a spherical shell. The \textbf{exact} eigenvectors of a spherical shell
 can be easily computed and expressed in terms of first and second kind spherical
-Bessel functions. We can go one step further and enclose the observed angular mask
-into a bounding spherical cap. We will show below that even the exact eigenvectors
-for a spherical cap can also be easily computed and expressed in terms of Legendre
-functions of the first and second kind. This results in a new basis for Fourier
-decomposition that is similar to the spherical basis but has fewer (less
-correlated) modes. The basis can be described by $k_n$ - a wavenumber of a radial
-mode, and two orbital numbers $\widetilde{\ell}$ and $\widetilde{m}$ that describe
-angular patterns. Unlike spherical Fourier decomposition $ \widetilde{\ell}$ does
-not have to be an integer.
+Bessel functions. We can go one step further and enclose the observed angular
+mask into a bounding spherical cap. We will show below that even the exact
+eigenvectors for a spherical cap can also be easily computed and expressed in
+terms of Legendre functions of the first and second kind. This results in a new
+basis for Fourier decomposition that is similar to the spherical basis but has
+fewer (less correlated) modes. The basis can be described by $k_n$ - a
+wavenumber of a radial mode, and two orbital numbers $\widetilde{\ell}$ and
+$\widetilde{m}$ that describe angular patterns. Unlike spherical Fourier
+decomposition $ \widetilde{\ell}$ does not have to be an integer.
 
 The basis we propose has a number of advantages, especially when describing
 clustering on large scales. The radial modes are in fact exact and fully
-uncorrelated. Since survey masks do not form a perfect spherical cap, the angular
-modes are not exact but are closer to the ``true'' basis than the conventional
-spherical harmonics decomposition. As a result the new basis has fewer
-eigenvectors for the same range of scales that are much less correlated because of
-the reduced redundancy.
+uncorrelated. Since survey masks do not form a perfect spherical cap, the
+angular modes are not exact but are closer to the ``true'' basis than the
+conventional spherical harmonics decomposition. As a result the new basis has
+fewer eigenvectors for the same range of scales that are much less correlated
+because of the reduced redundancy.
 
 The new basis is not computationally more expensive than the standard
 decompositions and may be advantageous when analyzing large-scale structure on
-large (compared to the size of the sample) scales such as the analysis of
-non-Gaussianity in galaxy and weak lensing surveys, $\ldots$.
+large (compared to the size of the sample) scales such as the analysis of non-
+Gaussianity in galaxy and weak lensing surveys, $\ldots$.
 
 We will derive the basis in section~\ref{sec:basis} and will apply it to the
 large-scale clustering of BOSS DR12 galaxies in section~\ref{sec:data} to
@@ -191,14 +193,69 @@ demonstrate that it indeed reduces the correlation of large-scale modes.
 \section{Complete Basis for a spherical shell}
 \label{sec:basis}
 
-\section{Testing new basis on BOSS DR12 data}
-\label{sec:data}
+We will start by finding a complete basis for a field in a spherical shell
+between $\rmin < r < \rmax$, for now assuming a full-sky
+coverage. The most general solution of Laplace equation in spherical coordinates
+is given by
+
+\begin{equation} 
+\label{eq:generalsol}
+f(r,\theta,\phi) = \left[C_jj_\lambda(kr) +
+C_yy_\lambda(kr)\right]\left[C_pP^\mu_\lambda (\cos (\theta)) +
+C_qQ_^\mu\lambda(\cos(\theta))\right]\left[C_+e^{i\mu\phi} + C_-e^ 
+{-i\mu\phi}\right],
+\end{equation} 
+\noindent
+where $C$s are constants, $Q^\mu_\lambda$ and $P^\mu_\lambda$ are Legendre
+functions of degree $\lambda$ and $\mu$. 
+
+Let's start with the angular part. First of all, the function has to be $2\pi$
+periodic in azimuthal angle $\phi$, which requires $\mu$ to be an integer $\mu =
+m = 0, 1, 2, \ldots$. The functions also have to be finite for $-1 \leq
+\cos(\theta) \leq 1$, which in addition requires that $\lambda$ is a positive
+integer $\lambda = \ell = 0, 1, 2, \ldots$ and that $-\ell \leq m \leq \ell$.
+For the angular part so far we have regular spherical harmonics.
+
+We now want to select a subset of radial functions that satisfy necessary
+boundary conditions at the edges of the spherical shell. Existing literature
+seems to prefer Newman boundary condition prescribing zero normal derivatives at
+these boundaries and we will follow this tradition, although in reality using
+Dirichlet or mixed boundary conditions would not make a big practical difference
+(except for a Gibb's phenomenon close to the boundary).\footnote{Periodic
+boundary conditions do not make much sense for a radial coordinate.} This means
+that we have to find a solution for a pair of equations
+
+\begin{align}
+\label{eq:bc1}
+j'_\ell(k\rmin) + \frac{C_y}{C_j}y'_\ell(k\rmin) = 0,\\
+\label{eq:bc2}
+j'_\ell(k\rmax) + \frac{C_y}{C_j}y'_\ell(k\rmax) = 0. 
+\end{align} 
+
+\noindent 
+This equation will only have a solution for specific discrete values of k and
+the $C_y/C_j$ ratio. These pairs of values are easy to find numerically and can
+be pre-tabulated for arbitrary index $\ell$, and the values of $\rmin$ and
+$\rmax$. We will denote these solutions by $k_{\ell,n}$ and $A_{\ell,n} \equiv
+C_y/C_j$ where n indexes the solutions of Eqs.~(\ref{eq:bc1}) and (
+\ref{eq:bc2}). The new radial functions are then
+\begin{equation} 
+\mathcal{j}_{\ell,n} = j_\ell(k_{\ell,n}r) + A_{\ell,n}y_\ell(k_{\ell,n}r),
+\end{eqution}
+\noindetn
+and we end up with a new basis
+
+\begin{equation}
+f_{n,\ell,m} \propto \mathcal{j}_{\ell,n}Y^m_\ell(\theta,\phi).
+\end{equation}
+
+
+\section{Testing new basis on BOSS DR12 data}  \label{sec:data}
 
 \section{Conclusions}
 \label{sec:conclusions}
 
-\section*{Acknowledgements}
-
+\section*{Acknowledgements}{}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%% REFERENCES %%%%%%%%%%%%%%%%%%
@@ -209,14 +266,18 @@ demonstrate that it indeed reduces the correlation of large-scale modes.
 %\bibliography{example} % if your bibtex file is called example.bib
 
 
-% Alternatively you could enter them by hand, like this:
+
+ % Alte
+ rnatively you could enter them by hand, like this:
 % This method is tedious and prone to error if you have lots of references
 \begin{thebibliography}{99}
 \end{thebibliography}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%%%%%%%%%%%%%%% APPENDICES %%%%%%%%%%%%%%%%%%%%%
+
+ %%%%%%
+ %%%%%%%%%%% APPENDICES %%%%%%%%%%%%%%%%%%%%%
 
 \appendix
 
