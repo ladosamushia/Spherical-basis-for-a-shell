@@ -51,8 +51,8 @@
 % Please keep new commands to a minimum, and use \newcommand not \def to avoid
 % overwriting existing commands. Example:
 %\newcommand{\pcm}{\,cm$^{-2}$}	% per cm-squared
-\newcommand{\rmin}{\rmin}
-\newcommand{\rmax}{\rmax}
+\newcommand{\rmin}{r_\mathrm{min}}
+\newcommand{\rmax}{r_\mathrm{max}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%% TITLE PAGE %%%%%%%%%%%%%%%%%%%
@@ -102,7 +102,6 @@ methods: analytical -- methods: data analysis -- methods: numerical -- methods: 
 %%%%%%%%%%%%%%%%% BODY OF PAPER %%%%%%%%%%%%%%%%%%
 
 \section{Introduction}
-
 Cosmological fields are often analyzed in Fourier basis. This is convenient
 because the distribution of matter in the Universe is initially very close to
 Gaussian with different Fourier modes statistically independent form each other.
@@ -189,7 +188,6 @@ Gaussianity in galaxy and weak lensing surveys, $\ldots$.
 We will derive the basis in section~\ref{sec:basis} and will apply it to the
 large-scale clustering of BOSS DR12 galaxies in section~\ref{sec:data} to
 demonstrate that it indeed reduces the correlation of large-scale modes.
-
 \section{Complete Basis for a spherical shell}
 \label{sec:basis}
 
@@ -198,13 +196,15 @@ between $\rmin < r < \rmax$, for now assuming a full-sky
 coverage. The most general solution of Laplace equation in spherical coordinates
 is given by
 
-\begin{equation} 
+\begin{align} 
 \label{eq:generalsol}
-f(r,\theta,\phi) = \left[C_jj_\lambda(kr) +
-C_yy_\lambda(kr)\right]\left[C_pP^\mu_\lambda (\cos (\theta)) +
-C_qQ_^\mu\lambda(\cos(\theta))\right]\left[C_+e^{i\mu\phi} + C_-e^ 
-{-i\mu\phi}\right],
-\end{equation} 
+f(r,\theta,\phi) = &\left[C_jj_\lambda(kr) + C_yy_\lambda(kr)\right]\times\\
+\nonumber
+&\left [C_pP^\mu_\lambda (\cos (\theta)) + C_qQ^\mu_\lambda(\cos
+(\theta))\right]\times\\
+\nonumber
+&\left[C_+e^{i\mu\phi} + C_-e^ {-i\mu\phi}\right],
+\end{align} 
 \noindent
 where $C$s are constants, $Q^\mu_\lambda$ and $P^\mu_\lambda$ are Legendre
 functions of degree $\lambda$ and $\mu$. 
@@ -240,22 +240,31 @@ $\rmax$. We will denote these solutions by $k_{\ell,n}$ and $A_{\ell,n} \equiv
 C_y/C_j$ where n indexes the solutions of Eqs.~(\ref{eq:bc1}) and (
 \ref{eq:bc2}). The new radial functions are then
 \begin{equation} 
-\mathcal{j}_{\ell,n} = j_\ell(k_{\ell,n}r) + A_{\ell,n}y_\ell(k_{\ell,n}r),
-\end{eqution}
-\noindetn
+\mathcal{J}_{\ell,n} = j_\ell(k_{\ell,n}r) + A_{\ell,n}y_\ell(k_{\ell,n}r),
+\end{equation}
+\noindent
 and we end up with a new basis
 
 \begin{equation}
-f_{n,\ell,m} \propto \mathcal{j}_{\ell,n}Y^m_\ell(\theta,\phi).
+f_{n,\ell,m} \propto \mathcal{J}_{\ell,n}Y^m_\ell(\theta,\phi).
 \end{equation}
 
+Any function in a spherical shell can be decomposed into this basis by
+\begin{equation}
+F(r,\theta,\phi) = \displaystyle\sum_{n,\ell,m}a_{n,\ell,m}\mathcal{J}_
+{\ell,n}Y^m_\ell(\theta,\phi),
+\end{equation}
+\noindent
+where $a_{n,\ell,m}$ are the new Fourier coefficients. Real data is never given
+on a full-sky and therefore the angular large-scale modes will still be
+correlated by the mask, but purely radial modes are now uncorrelated.
 
-\section{Testing new basis on BOSS DR12 data}  \label{sec:data}
+\subsection{Reducing Angular Correlations}
 
 \section{Conclusions}
 \label{sec:conclusions}
 
-\section*{Acknowledgements}{}
+\section*{Acknowledgements}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%% REFERENCES %%%%%%%%%%%%%%%%%%
@@ -267,8 +276,7 @@ f_{n,\ell,m} \propto \mathcal{j}_{\ell,n}Y^m_\ell(\theta,\phi).
 
 
 
- % Alte
- rnatively you could enter them by hand, like this:
+ % Alternatively you could enter them by hand, like this:
 % This method is tedious and prone to error if you have lots of references
 \begin{thebibliography}{99}
 \end{thebibliography}
