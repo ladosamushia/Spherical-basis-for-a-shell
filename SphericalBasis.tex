@@ -97,14 +97,14 @@ properly taking into account some of the relevant physical processes
 in redshift slices and have a partial sky coverage. These masking effects
 strongly correlate Fourier-Bessel modes that are meant for a perfect spherical
 geometry and result in a lot of redundant measurements. This work proposes a
-new Fourier basis that is better suited for measurements in redshift shells.
-These results in fewer Fourier modes, with the radial modes strictly
-uncorrelated on large scales and the angular modes with significantly reduced
-redundancy. I argue that the spherical Fourier analysis of cosmological fields
-should always use these new modes instead of the historically established
-Fourier-Bessel eigenfunctions. The new angular modes on the other hand have
-number of practical advantages and disadvantages and whether or not to adopt
-them for a particular analysis should be made on a case by case basis.
+new Fourier basis that is better suited for measurements in redshift shells and
+results in fewer Fourier modes, with the radial modes strictly uncorrelated on
+large scales and the angular modes with significantly reduced redundancy. I
+argue that the spherical Fourier analysis of cosmological fields should always
+use these new modes instead of the historically established Fourier-Bessel
+eigenfunctions. The new angular modes on the other hand have number of
+practical advantages and disadvantages and whether or not to adopt them for a
+particular analysis should be made on a case by case basis.
 \end{abstract}
 
 % Select between one and six entries from the list of approved keywords.
@@ -120,7 +120,7 @@ statistical -- large-scale structure of Universe
 
 \section{Introduction}
 
-Cosmological fields are often analyzed in Fourier basis. 
+Cosmological fields are often analyzed in Fourier basis, 
 \begin{equation}
 \label{eq:Finfinity}
 f(\bm{r})\propto \displaystyle\int\!\!\mathrm{d}\bm{r}
@@ -136,10 +136,10 @@ the gravitational evolution is close to linear, they remain uncorrelated.
 In practice, these cosmological fields are observed in finite volumes. The ``
 window'' effects due to finite volume correlate the measured Fourier modes
 $\tilde{f}(\bm{k})$ and reduce the number of effectively uncorrelated modes
-\citep{1991MNRAS.253..307P}.  The exact nature of these modes depends on the
-geometry of the observed volume.  For a cube with a side length $L$ and
-periodic boundary conditions the proper decomposition into complete orthogonal
-basis vectors is be given by,
+\citep{1991MNRAS.253..307P}.  The exact nature of these uncorrelated modes
+depends on the geometry of the observed volume.  For a cube with a side length
+$L$ and periodic boundary conditions the proper decomposition into complete
+orthogonal basis vectors is be given by,
 \begin{equation}
 \label{eq:Fcube}
 f(x,y,z)\propto
@@ -148,7 +148,7 @@ f(x,y,z)\propto
 \end{equation}
 \noindent
 where $l$, $m$, $n$ are integers and $x$, $y$, $z$ are Cartesian coordinates.
-The new, smaller set of eigenvectors $\tilde{f}_{\ell,m,n}$ are now
+The new, smaller set of eigenvectors $\tilde{f}_{\ell m n}$ are now
 uncorrelated. The original modes from Eq.~\eqref{eq:Finfinity} are not
 independent anymore and can be expressed in terms of the basis of
 Eq.~\eqref{eq:Fcube}.
@@ -164,7 +164,7 @@ f(r,\theta,\phi) \propto \displaystyle\sum_{\ell,m,n} \tilde{f}_{\ell m n}j_\ell
 \end{equation}
 \noindent
 Here $j_\ell$ are spherical Bessel functions of the first kind, $Y^\ell_m$ are
-the spherical harmonics, and $k_{\ell,n}$ is the n-th zero of the $\ell$-th
+the spherical harmonics, and $k_{\ell n}$ is the n-th zero of the $\ell$-th
 order spherical Bessel function. $r$, $\theta$, $\phi$ are spherical
 coordinates, while $n$, $\ell$ and $m$ are integers satisfying $-\ell \leq m
 \leq \ell$ \citep[see e.g.,][]{1995MNRAS.275..483H}.
@@ -207,8 +207,8 @@ Legendre functions of the first and second kind. This results in a new basis
 for Fourier decomposition that is similar to the spherical basis but has fewer
 (less correlated) modes. The basis can be described by $k_n$ - a wavenumber of
 a radial mode, and two orbital numbers $\lambda$ and $m$ that describe angular
-patterns. Unlike spherical Fourier decomposition $ \lambda$ does not have to
-be an integer. This radial and angular eigenvectors have been separately
+patterns. Unlike spherical Fourier decomposition $ \lambda$ is not in general 
+an integer. This radial and angular eigenvectors have been separately
 studied before in the context of geophysics
 \citep{1985JGR....90.2583H,2006JGRB..111.1102T,Mushref2010}, but I am not aware
 of any reference that studies them simultaneously. I am also not aware of any
@@ -228,12 +228,13 @@ decompositions and may be advantageous when analyzing large-scale structure on
 large (compared to the size of the sample) scales such as the analysis of
 non-Gaussianity in galaxy and weak lensing surveys, and intensity mapping
 experiments
-\citep[e.g.,][]{2019arXiv190508262Y,2016ApJ...833..242L,2014MNRAS.442.1326K}.
+\citep[e.g.,][]{2016ApJ...833..242L,2014MNRAS.442.1326K}.
 
 I will derive this basis in section~\ref{sec:basis}, will describe some of
 its basic properties in section~\ref{sec:properties}, and possible applications
 in section~\ref{sec:conclusions}. Application of the basis to real data is left
-for future work.
+for future work \citep[see, ][for an example of how the new basis is used in
+computing signal to noise of future 21cm experiments]{Pullen2019}.
 
 \section{Complete Basis for a Spherical Shell}
 \label{sec:basis}
@@ -256,15 +257,16 @@ f(r,\theta,\phi) = &\left[C_jj_\lambda(kr) + C_yy_\lambda(kr)\right]\times\\
 \end{align} 
 \noindent
 where all $C$s are constants, $Q^\mu_\lambda$ and $P^\mu_\lambda$ are Legendre
-functions of degree $\lambda$ and $\mu$, and $j_\ell$ and $y_\ell$ are
+functions of the first and second kind, and $j_\ell$ and $y_\ell$ are
 spherical Bessel functions of first and second kind.
 
 The quantization of the angular part is standard. First of all, the function
-has to be $2\pi$ periodic in azimuthal angle $\phi$, which requires $\mu$ to be
+has to be $2\pi$ periodic in azimuthal angle $\phi$, which forces $\mu$ to be
 an integer $\mu = m = 0, 1, 2, \ldots$. The functions also have to be finite
-for $-1 \leq \cos(\theta) \leq 1$, which in addition requires that $\lambda$ is
-a positive integer $\lambda = \ell = 0, 1, 2, \ldots$ and that $-\ell \leq m
-\leq \ell$.  For the angular part so far we have regular spherical harmonics.
+for $-1 \leq \cos(\theta) \leq 1$, which in addition requires that $C_q=0$ and
+$\lambda$ is a positive integer $\lambda = \ell = 0, 1, 2, \ldots$ and that
+$-\ell \leq m \leq \ell$.  For the angular part so far we have regular
+spherical harmonics.
 
 We now want to select a subset of radial functions that satisfy necessary
 boundary conditions at the edges of the spherical shell. Existing literature
@@ -299,7 +301,7 @@ and we end up with a new basis
 \end{equation}
 Any function in a spherical shell can be decomposed into this basis by
 \begin{equation}
-f(r,\theta,\phi) = \displaystyle\sum_{n,\ell,m}\widetilde{a}_{n \ell m}\mathcal{J}_
+f(r,\theta,\phi) = \displaystyle\sum_{n,\ell,m}\widetilde{f}_{n \ell m}\mathcal{J}_
 {\ell n}(r)Y^m_\ell(\theta,\phi),
 \end{equation}
 \noindent
@@ -317,12 +319,13 @@ for simple geometries however such solutions may exist. One example of such a
 geometry is a spherical cap given by $\cos(\theta_\mathrm{max}) < \cos(\theta) <
 1$, where we directed azimuthal axis towards the middle of the cap for
 simplicity. In this case the eigenvectors are still given by a mixture of
-$P^\mu_\lambda$ and $Q^\mu_\lambda$ but the boundary condition changes to the angular
-derivative being zero at $\theta = \theta_\mathrm{max}$ and the functions being
-finite within $\theta_\mathrm{max} < \theta < 0$. This excludes $Q^\mu_\lambda$
-which are not finite for $\cos(\theta) < 1$ and quantizes $\lambda$ values in
-$P^\mu_\lambda$ which are not in general integer. Since we still need the solution
-to be azimuthally symmetric $\mu = m$ still needs to be integer. 
+$P^\mu_\lambda$ and $Q^\mu_\lambda$ but the boundary condition changes to the
+angular derivative being zero at $\theta = \theta_\mathrm{max}$ and the
+functions being finite within $\theta_\mathrm{max} < \theta < 0$. This excludes
+$Q^\mu_\lambda$ which are not finite for $\cos(\theta) < 1$ and quantizes
+$\lambda$ values in $P^\mu_\lambda$ which are still discrete but not in general
+integer. Since we need the solution to be azimuthally symmetric $\mu = m$ still
+needs to be integer. 
 
 To find the spectrum in $\lambda$ we have to numerically solve equation
 \begin{equation}
@@ -383,7 +386,7 @@ bins the standard Fourier-Bessel provide way too many large scale modes that
 are bound to be strongly correlated by the radial mask (this spectrum only
 depends on the upper edge and not on the bin width), while the new basis has
 fewer eigenfunctions for narrow bins properly reflecting this fact. The lowest
-frequency modes scale roughly as $2\pi/\Delta r$ with bin width as expected.
+frequency modes scale roughly as $\pi/\Delta r$ with bin width as expected.
 Also as expected, as the bin width increases (higher frequencies) the
 differences between two bases become smaller.
 
@@ -400,7 +403,7 @@ eigenfunctions as a function of the footprint size. For the standard spherical
 harmonics basis the $\ell$ spectrum consists of positive integers irrespective
 of the size of the footprint which results in strongly correlated modes at low
 $\ell$. The proper basis has fewer eigenfunctions for smaller footprints. The
-lowest $\lambda$ roughly scales as $2\pi/\theta_\mathrm{max}$ as expected. For
+lowest $\lambda$ roughly scales as $\pi/\theta_\mathrm{max}$ as expected. For
 larger footprints the difference between two bases gets smaller. The $\lambda$
 spectrum has all the intuitively expected properties e.g. for half-sky coverage
 it consists of only odd integers (or even integers depending on the boundary
@@ -418,11 +421,10 @@ dots) as a function of $\theta_\mathrm{max}$.}
 \label{sec:conclusions}
 
 This paper introduces a new Fourier basis that is exact for fields observed in
-spherical shells and caps. This basis has two potential advantages. 
-
-Firstly, it strongly reduces the window induced correlations between measured
-Fourier modes, in fact if the survey geometry were a perfect spherical shell in
-an angular cap there would be no correlations. Realistic survey footprints are
+spherical shells and caps. This basis has a number of potential advantages.  It
+strongly reduces the window induced correlations between measured Fourier
+modes, in fact if the survey geometry were a perfect spherical shell in an
+angular cap there would be no correlations. Realistic survey footprints are
 unlikely to be exact spherical caps but one can always find the smallest
 spherical cap that encloses the survey footprint (e.g. BOSS CMASS North can be
 enclosed in a spherical cap with $\theta_\mathrm{max} \simeq 52\degree$). This
@@ -432,10 +434,9 @@ scales, and the studies that make use of very large scale power spectrum may
 want to opt for the Fourier coefficients that are significantly decorrelated.
 The radial part of the decomposition of course does not suffer from this
 problem since observed fields are almost always analysed in redshift shells
-with sharp radial boundaries.
-
-The second advantage is numerical. Since significantly less Fourier modes need
-to be computed the analysis codes are likely to be much faster.
+with sharp radial boundaries. Since significantly less Fourier modes need
+to be computed the analysis codes are likely to be much faster, and the
+covariance matrices are smaller which is always a welcome improvement.
 
 For the standard BAO/RSD type of analysis that takes place on scales smaller
 than the survey window the Cartesian Fourier basis is probably more convenient,
@@ -476,6 +477,9 @@ work was funded by NASA grant 12-EUCLID11-0004 and the DOE grant DE-SC001184.
 \bibitem[\protect\citeauthoryear{Bianchi, Gil-Mar{\'\i}n, Ruggeri \&
 Percival}{2015}]{2015MNRAS.453L..11B} Bianchi D., Gil-Mar{\'\i}n H., Ruggeri
 R., Percival W.~J., 2015, MNRAS, 453, L11
+
+\bibitem[\protect\citeauthoryear{Chakraborty \& Pullen}{2019}]{Pullen2019}
+Chakraborty, P., Pullen, A.~R., 2019, in prep.
 
 \bibitem[\protect\citeauthoryear{Dawson, et al.}{2013}]{2013AJ....145...10D}
 Dawson K.~S., et al., 2013, AJ, 145, 10
@@ -522,9 +526,9 @@ de la Torre S., 2017, MNRAS, 464, 3121
 \bibitem[\protect\citeauthoryear{Yoo \& Seljak}{2015}]{2015MNRAS.447.1789Y} Yoo
 J., Seljak U., 2015, MNRAS, 447, 1789
 
-\bibitem[\protect\citeauthoryear{Yoo, Mitsou, Grimm, Durrer \&
-Refregier}{2019}]{2019arXiv190508262Y} Yoo J., Mitsou E., Grimm N., Durrer R.,
-Refregier A., 2019, arXiv e-prints, arXiv:1905.08262
+%\bibitem[\protect\citeauthoryear{Yoo, Mitsou, Grimm, Durrer \&
+%Refregier}{2019}]{2019arXiv190508262Y} Yoo J., Mitsou E., Grimm N., Durrer R.,
+%Refregier A., 2019, arXiv e-prints, arXiv:1905.08262
 \end{thebibliography}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
